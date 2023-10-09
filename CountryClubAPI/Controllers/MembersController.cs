@@ -47,7 +47,6 @@ namespace CountryClubAPI.Controllers
             _context.SaveChanges();
 
             return new JsonResult(member);
-
         }
 
         [HttpDelete("{id}")]
