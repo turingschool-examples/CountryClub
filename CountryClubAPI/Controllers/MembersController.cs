@@ -49,13 +49,22 @@ namespace CountryClubAPI.Controllers
 
         [HttpPost]
         [Route("api/members/edit/{id:int}")]
-        public IActionResult Update(Member member)
+        public IActionResult UpdateMember(Member member)
         {
             
             _context.Members.Update(member);
             _context.SaveChanges();
 
             return new JsonResult(member);
+        }
+        [HttpPost]
+        public IActionResult DeleteMember(int Id)
+        {
+            var members = _context.Members.Find(Id);
+            _context.Members.Remove(members);
+            _context.SaveChanges();
+
+            return new JsonResult(members);
         }
     }
 }
